@@ -16,8 +16,8 @@ const LoginComponent = () => {
             axios({
                 method: "post",
                 headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    // 'Access-Control-Allow-Credentials': true
+                    "Access-Control-Allow-Origin": "https://serverabb.herokuapp.com/login",
+                    'Access-Control-Allow-Credentials': true
                 },
                 data: {
                     username: login,
