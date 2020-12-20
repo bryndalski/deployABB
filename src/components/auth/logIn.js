@@ -15,7 +15,7 @@ const LoginComponent = () => {
         if (login !== '' && password !== '') {
             axios({
                 headers: {
-                    "Access-Control-Allow-Origin": "https://serverabb.herokuapp.com/",
+                    "Access-Control-Allow-Origin": "*",
                     'Access-Control-Allow-Credentials': true
                 },
                 method: "post",
