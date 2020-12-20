@@ -14,10 +14,10 @@ const LoginComponent = () => {
     const loginFunction = () => {
         if (login !== '' && password !== '') {
             axios({
-                // headers: {
-                //     "Access-Control-Allow-Origin": "*",
-                //     'Access-Control-Allow-Credentials': true
-                // },
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    'Access-Control-Allow-Credentials': true
+                },
                 method: "post",
                 data: {
                     username: login,
