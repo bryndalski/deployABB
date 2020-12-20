@@ -14,11 +14,11 @@ const LoginComponent = () => {
     const loginFunction = () => {
         if (login !== '' && password !== '') {
             axios({
-                method: "post",
                 headers: {
-                    "Access-Control-Allow-Origin": "https://serverabb.herokuapp.com/login",
+                    "Access-Control-Allow-Origin": "https://serverabb.herokuapp.com/",
                     'Access-Control-Allow-Credentials': true
                 },
+                method: "post",
                 data: {
                     username: login,
                     password: password,
