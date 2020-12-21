@@ -15,7 +15,7 @@ export const dropTable = async (Sheet) => {
         if (numberValue === confirmText.toString()) {
             axios({
                 method: 'POST',
-                url: "http://localhost:5000/deleteTable",
+                url: "https://serverabb.herokuapp.com/deleteTable",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                 },

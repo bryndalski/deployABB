@@ -39,7 +39,6 @@ export const addRecord = async (Columns, sheet, setrefreshFire, refreshFire) => 
                     })
                 })
                     .then((res) => {
-                        console.log(res)
                         if (res.data !== undefined) {
                             if (res.data.success) {
                                 SweetAlert.fire({
