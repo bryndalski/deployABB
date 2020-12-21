@@ -39,46 +39,45 @@ export const RodAdd = async () => {
                         },
                         showCancelButton: true,
                     }).queue(queueArray).then((result) => {
-                        if (result.isConfirmed)
-                            if (result.value) {
-                                let dataToSend = [dataObject['table_name'], ...result.value]
-                                axios({
-                                    method: "post",
-                                    url: "https://serverabb.herokuapp.com/newTable",
-                                    headers: {
-                                        "Access-Control-Allow-Origin": "*",
-                                    },
-                                    data: {
-                                        ...dataToSend
-                                    }
-                                }).catch((err) => {
+                        if (result.value) {
+                            let dataToSend = [dataObject['table_name'], ...result.value]
+                            axios({
+                                method: "post",
+                                url: "https://serverabb.herokuapp.com/newTable",
+                                headers: {
+                                    "Access-Control-Allow-Origin": "*",
+                                },
+                                data: {
+                                    ...dataToSend
+                                }
+                            }).catch((err) => {
+                                return SweetAlert.fire({
+                                    title: "Ooops",
+                                    text: "Could not connect to server",
+                                    icon: 'error',
+                                })
+                            }).then((res) => {
+                                try {
+                                    if (res.data.success)
+                                        SweetAlert.fire({
+                                            icon: 'success',
+                                            title: "Table successfully created",
+                                        })
+                                    else
+                                        SweetAlert.fire({
+                                            icon: 'warning',
+                                            title: "Sorry",
+                                            text: "We could't create your table please try again"
+                                        })
+                                } catch (err) {
                                     return SweetAlert.fire({
                                         title: "Ooops",
-                                        text: "Could not connect to server",
+                                        text: "unexpected error occurred deleting row in your table",
                                         icon: 'error',
                                     })
-                                }).then((res) => {
-                                    try {
-                                        if (res.data.success)
-                                            SweetAlert.fire({
-                                                icon: 'success',
-                                                title: "Table successfully created",
-                                            })
-                                        else
-                                            SweetAlert.fire({
-                                                icon: 'warning',
-                                                title: "Sorry",
-                                                text: "We could't create your table please try again"
-                                            })
-                                    } catch (err) {
-                                        return SweetAlert.fire({
-                                            title: "Ooops",
-                                            text: "unexpected error occurred deleting row in your table",
-                                            icon: 'error',
-                                        })
-                                    }
-                                })
-                            }
+                                }
+                            })
+                        }
                     })
                 }
             })
